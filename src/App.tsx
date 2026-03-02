@@ -3,8 +3,7 @@ import { useSettings } from './hooks/useSettings'
 import { useTimer } from './hooks/useTimer'
 import { useWakeLock } from './hooks/useWakeLock'
 import { playAlertTone } from './utils/audio'
-import GradientBackground from './components/GradientBackground'
-import CountdownDisplay from './components/CountdownDisplay'
+import CircleCountdown from './components/CircleCountdown'
 import WakeLockIndicator from './components/WakeLockIndicator'
 import TimerControls from './components/TimerControls'
 import SetupScreen from './components/SetupScreen'
@@ -75,8 +74,9 @@ export default function App() {
 
   // Timer view (running or paused)
   return (
-    <GradientBackground percentRemaining={timer.percentRemaining}>
-      <CountdownDisplay
+    <div className="w-screen h-screen bg-slate-950 flex items-center justify-center">
+      <CircleCountdown
+        percentRemaining={timer.percentRemaining}
         formattedTime={timer.formattedTimeRemaining}
         departureLabel={formatDepartureLabel(settings.departureTime)}
         status={timer.status}
@@ -88,6 +88,6 @@ export default function App() {
         onEdit={handleEdit}
       />
       <WakeLockIndicator active={wakeLockActive} supported={wakeLockSupported} />
-    </GradientBackground>
+    </div>
   )
 }
