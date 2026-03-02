@@ -1,13 +1,12 @@
 import TimePicker from './TimePicker'
-import { useSettings } from '../hooks/useSettings'
 
 interface SetupScreenProps {
+  departureTime: string
+  onTimeChange: (time: string) => void
   onStart: () => void
 }
 
-export default function SetupScreen({ onStart }: SetupScreenProps) {
-  const { settings, updateSettings } = useSettings()
-
+export default function SetupScreen({ departureTime, onTimeChange, onStart }: SetupScreenProps) {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center gap-8 bg-green-800">
       <div className="flex flex-col items-center gap-2">
@@ -16,8 +15,8 @@ export default function SetupScreen({ onStart }: SetupScreenProps) {
       </div>
 
       <TimePicker
-        value={settings.departureTime}
-        onChange={time => updateSettings({ departureTime: time })}
+        value={departureTime}
+        onChange={onTimeChange}
       />
 
       <div className="flex flex-col items-center gap-2">
