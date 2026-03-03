@@ -77,6 +77,7 @@ export default function App() {
     <div className="w-screen h-screen bg-slate-950 flex items-center justify-center">
       <CircleCountdown
         percentRemaining={timer.percentRemaining}
+        secondsRemaining={timer.secondsRemaining}
         formattedTime={timer.formattedTimeRemaining}
         departureLabel={formatDepartureLabel(settings.departureTime)}
         status={timer.status}
